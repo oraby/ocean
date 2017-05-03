@@ -15,6 +15,12 @@ DC ?= dmd
 override DFLAGS += -de
 endif
 
+# Build examples
+.PHONY: example-serialize
+example-serialize: $G/example/serialize
+$G/example/serialize: $C/example/serialize.d
+all += example-serialize
+
 # Remove deprecated modules from testing:
 TEST_FILTER_OUT += \
 	$C/src/ocean/io/Stdout_tango.d \
